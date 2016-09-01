@@ -144,7 +144,7 @@ public class MybatisFirst {
 //		userCustom.setUsername("大毛");
 //		userQueryVo.setUserCustom(userCustom);
 		List<Integer> list = new ArrayList<Integer>();
-		list.add(27);
+		list.add(26);
 		list.add(29);
 		userQueryVo.setIds(list);
 		
