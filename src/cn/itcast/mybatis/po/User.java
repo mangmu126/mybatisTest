@@ -40,8 +40,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "User [id]"+id;
+		return "User [id=" + id + ", username=" + username + ", sex=" + sex
+				+ ", birthday=" + birthday + ", address=" + address + "]";
 	}
 	
 }
