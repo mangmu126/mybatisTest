@@ -48,5 +48,17 @@ public class OrdersTset {
 		List<Orders>  count = orderMapper.findOrdersUserResultMap();
 		System.out.println(count);
 	}
-
+	@Test
+	public void TestfindOrdersAndOrderDetailResultMap() throws Exception {
+		String resource = "SqlMapConfig.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapperCustom orderMapper = sqlSession.getMapper(OrdersMapperCustom.class);
+	
+		
+		List<Orders>  count = orderMapper.findOrdersAndOrderDetailResultMap();
+		System.out.println(count);
+	}
 }

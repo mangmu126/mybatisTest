@@ -1,6 +1,7 @@
 package cn.itcast.mybatis.po;
 
 import java.util.Date;
+import java.util.List;
 
 public class Orders {
     private Integer id;
@@ -15,6 +16,9 @@ public class Orders {
     
     // 用户信息
     private User user;
+    
+    // 订单明细
+    private List<Orderdetail> orderdetail;
 
     public Integer getId() {
         return id;
