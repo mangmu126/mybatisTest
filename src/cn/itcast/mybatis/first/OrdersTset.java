@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import cn.itcast.mybatis.mapper.OrdersMapperCustom;
 import cn.itcast.mybatis.mapper.UserMapper;
+import cn.itcast.mybatis.po.Orders;
 import cn.itcast.mybatis.po.OrdersCustom;
 import cn.itcast.mybatis.po.UserCustom;
 import cn.itcast.mybatis.po.UserQueryVo;
@@ -31,6 +32,20 @@ public class OrdersTset {
 	
 		
 		List<OrdersCustom>  count = orderMapper.findOrdersUser();
+		System.out.println(count);
+	}
+	
+	@Test
+	public void TestfindOrdersUserResultMap() throws Exception {
+		String resource = "SqlMapConfig.xml";
+		InputStream inputStream = Resources.getResourceAsStream(resource);
+		
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		OrdersMapperCustom orderMapper = sqlSession.getMapper(OrdersMapperCustom.class);
+	
+		
+		List<Orders>  count = orderMapper.findOrdersUserResultMap();
 		System.out.println(count);
 	}
 

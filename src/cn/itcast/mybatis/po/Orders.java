@@ -13,6 +13,8 @@ public class Orders {
 
     private String note;
     
+    // 用户信息
+    private User user;
 
     public Integer getId() {
         return id;

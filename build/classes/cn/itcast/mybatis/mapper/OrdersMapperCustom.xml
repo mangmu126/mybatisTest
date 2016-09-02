@@ -16,6 +16,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE orders.user_id = user.id
 	</select>
 	
+	
+	<resultMap type="cn.itcast.mybatis.po.Orders" id="OrdersUserResultMap">
+		<id column="id" property="id"/>
+		<result column="user_id" property="userId"/>
+		<result column="number" property="number"/>
+		<result column="createtime" property="createtime"/>
+		<result column="note" property="note"/>
+		
+		<!-- 配置映射的关联用户信息-->
+		<!-- association:用户映射查询关联查询单个对象的信息 
+			property:要将关联查询的用户信息映射到Orders中那个属性
+		-->
+		<association property="user" javaType="cn.itcast.mybatis.po.User">
+			<id column="user_id" property="id"/>
+			<result column="username" property="username"/>
+			<result column="sex" property="sex"/>
+			<result column="address" property="address"/>
+		</association>
+		
+	</resultMap>
+	
+	<!-- 查询订单关联查询用户信息,使用resultmap -->
+	<select id="findOrdersUserResultMap" resultMap="OrdersUserResultMap">
+		 select orders.*,user.username,user.sex,user.address from orders join user on orders.user_id = user.id;
+	</select>
+	
 </mapper>
 
 
