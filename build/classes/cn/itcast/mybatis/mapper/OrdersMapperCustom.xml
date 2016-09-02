@@ -59,6 +59,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</collection>
 	</resultMap>
 	
+	<select id="findOrdersUserLazyLoading" resultMap="OrdersUserLazyLoadingResultMap">
+		SELECT * FROM orders;
+	</select>
+	
+	<select id="findUserById" parameterType="int" resultType="user">
+		SELECT * FROM user WHERE id=#{value}
+	</select>
+	
+	<resultMap type="cn.itcast.mybatis.po.Orders" id="OrdersUserLazyLoadingResultMap">
+		<id column="id" property="id"/>
+			<result column="user_id" property="userId"/>
+			<result column="number" property="number"/>
+			<result column="createtime" property="createtime"/>
+			<result column="note" property="note"/>
+		<association property="user" javaType="cn.itcast.mybatis.po.User" select="cn.itcast.mybatis.mapper.UserMapper.findUserById" column="user_id">
+			
+		
+		</association>
+	
+	</resultMap>
+	
+	
+	
 </mapper>
 
 
